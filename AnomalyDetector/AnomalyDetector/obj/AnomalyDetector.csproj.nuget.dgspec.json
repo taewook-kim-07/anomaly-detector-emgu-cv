@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\KTW\\source\\repos\\AnomalyDetector\\AnomalyDetector\\AnomalyDetector.csproj": {}
+    "C:\\Users\\KTW\\Documents\\GitHub\\anomaly-detector-emgu-cv\\AnomalyDetector\\AnomalyDetector\\AnomalyDetector.csproj": {}
   },
   "projects": {
-    "C:\\Users\\KTW\\source\\repos\\AnomalyDetector\\AnomalyDetector\\AnomalyDetector.csproj": {
+    "C:\\Users\\KTW\\Documents\\GitHub\\anomaly-detector-emgu-cv\\AnomalyDetector\\AnomalyDetector\\AnomalyDetector.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\KTW\\source\\repos\\AnomalyDetector\\AnomalyDetector\\AnomalyDetector.csproj",
+        "projectUniqueName": "C:\\Users\\KTW\\Documents\\GitHub\\anomaly-detector-emgu-cv\\AnomalyDetector\\AnomalyDetector\\AnomalyDetector.csproj",
         "projectName": "AnomalyDetector",
-        "projectPath": "C:\\Users\\KTW\\source\\repos\\AnomalyDetector\\AnomalyDetector\\AnomalyDetector.csproj",
+        "projectPath": "C:\\Users\\KTW\\Documents\\GitHub\\anomaly-detector-emgu-cv\\AnomalyDetector\\AnomalyDetector\\AnomalyDetector.csproj",
         "packagesPath": "C:\\Users\\KTW\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\KTW\\source\\repos\\AnomalyDetector\\AnomalyDetector\\obj\\",
+        "outputPath": "C:\\Users\\KTW\\Documents\\GitHub\\anomaly-detector-emgu-cv\\AnomalyDetector\\AnomalyDetector\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\KTW\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -55,6 +55,14 @@
             "Emgu.CV.runtime.windows": {
               "target": "Package",
               "version": "[4.6.0.5131, )"
+            },
+            "Emgu.CV.runtime.windows.cuda": {
+              "target": "Package",
+              "version": "[4.6.0.5131, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.31, )"
             }
           },
           "imports": [

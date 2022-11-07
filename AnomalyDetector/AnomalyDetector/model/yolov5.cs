@@ -17,7 +17,7 @@ namespace AnomalyDetector.model
         private int INPUT_HEIGHT;
 
         private Net YoloModel;
-        private Object _lockObject = new Object();
+        static Object _lockObject = new Object();
 
         public struct YoloDetection
         {
@@ -40,7 +40,7 @@ namespace AnomalyDetector.model
             {
                 Debug.Print("Running on GPU");
                 YoloModel.SetPreferableBackend(Emgu.CV.Dnn.Backend.Cuda);
-                YoloModel.SetPreferableTarget(Emgu.CV.Dnn.Target.CudaFp16);
+                YoloModel.SetPreferableTarget(Emgu.CV.Dnn.Target.Cuda);
             }
             else
             {
@@ -123,7 +123,6 @@ namespace AnomalyDetector.model
                 });
             });
 
-            Debug.Print($"{boxes.Count} , {confidences.Count}");
             int[] bIndexes = DnnInvoke.NMSBoxes(boxes.ToArray(), confidences.ToArray(), MIN_CONFIDENCE, NMS_THRESHOLD);
 
             List<YoloDetection> filteredBoxes = new List<YoloDetection>();
@@ -142,5 +141,5 @@ namespace AnomalyDetector.model
             return filteredBoxes;
         }
 
-}
+    }
 }
