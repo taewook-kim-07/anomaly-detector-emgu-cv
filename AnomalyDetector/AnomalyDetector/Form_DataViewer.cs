@@ -16,22 +16,22 @@ namespace AnomalyDetector
     public partial class Form_DataViewer : Form
     {
         database Database;
-        private int pagesize = 3;
+        private int pagesize = 30;
 
-        private void ShowWorkList(ref database Database, int page, int page_size, ref DataGridView datagridview, ref Label label, ref TextBox textbox)
+        private void ShowWorkList(ref database Database, int page, int page_size, ref DataGridView datagridview, ref TextBox textbox)
         {
-            int count = Database.Select(ref datagridview, page - 1, page_size);
+            int count = Database.Select(ref datagridview, page - 1, page_size, checkBox1.Checked);            
 
-            label.Text = $"마지막 조회 시간 ({DateTime.Now})\n{count}개";
+            this.Text = $"마지막 조회 시간 ({DateTime.Now})\n{count}개";
             textbox.Text = page.ToString();
         }
 
         public Form_DataViewer(ref database parentdb)
         {
             InitializeComponent();
-            this.Text = $"({DateTime.Now})";
+
             Database = parentdb;
-            ShowWorkList(ref Database, 1, pagesize, ref dataGridView1, ref label1, ref textBox1);
+            ShowWorkList(ref Database, 1, pagesize, ref dataGridView1, ref textBox1);
         }
 
         private void Form_DataViewer_FormClosing(object sender, FormClosingEventArgs e)
@@ -68,8 +68,27 @@ namespace AnomalyDetector
             }
             if (e.KeyChar == 13)
             {
-                ShowWorkList(ref Database, Convert.ToInt32(textBox1.Text), pagesize, ref dataGridView1, ref label1, ref textBox1);
+                ShowWorkList(ref Database, Convert.ToInt32(textBox1.Text), pagesize, ref dataGridView1, ref textBox1);
             }
+        }
+
+        private void button_prev_Click(object sender, EventArgs e)
+        {
+            int now_page = Convert.ToInt32(textBox1.Text);
+            if (now_page <= 1)
+                now_page = 2;
+
+            ShowWorkList(ref Database, now_page - 1, pagesize, ref dataGridView1, ref textBox1);
+        }
+
+        private void button_next_Click(object sender, EventArgs e)
+        {
+            ShowWorkList(ref Database, Convert.ToInt32(textBox1.Text) + 1, pagesize, ref dataGridView1, ref textBox1);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            ShowWorkList(ref Database, Convert.ToInt32(textBox1.Text), pagesize, ref dataGridView1, ref textBox1);
         }
     }
 }

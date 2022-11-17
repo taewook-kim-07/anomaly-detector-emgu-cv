@@ -34,7 +34,6 @@ namespace AnomalyDetector.model
             INPUT_WIDTH    = input_width;
             INPUT_HEIGHT   = input_height;
 
-            // Net YoloModel = DnnInvoke.ReadNet(model_path);
             YoloModel = Emgu.CV.Dnn.DnnInvoke.ReadNetFromONNX(model_path);
             if (useCuda)
             {
@@ -102,10 +101,12 @@ namespace AnomalyDetector.model
                         float top = output[0, i, 1] - output[0, i, 3] / 2;
                         float right = output[0, i, 0] + output[0, i, 2] / 2;
                         float bottom = output[0, i, 1] + output[0, i, 3] / 2;
+
                         left *= x_factor;
                         right *= x_factor;
                         top *= y_factor;
                         bottom *= y_factor;
+
                         // 공유 자원을 각 For문으로 접근하여 데이터 손상이 발생하므로 Lock으로 동시에 처리 못하게 함
                         lock (_lockObject)
                         {

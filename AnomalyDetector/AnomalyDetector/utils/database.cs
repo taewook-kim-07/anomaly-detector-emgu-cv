@@ -43,11 +43,16 @@ namespace AnomalyDetector.utils
             return true;
         }
 
-        public int Select(ref DataGridView table, int page = 0, int page_size = 100)
+        public int Select(ref DataGridView table, int page = 0, int page_size = 100, bool onlyNG = false)
         {
             try
             {
-                MySqlCommand query = new MySqlCommand("SELECT `id`,`date`,`result`,`detail` FROM `inspection_history` LIMIT @page, @page_size;", connection);
+                string querystr = "";
+                if (onlyNG)
+                    querystr = "WHERE `result`='NG'";
+
+                MySqlCommand query = new MySqlCommand(
+                    $"SELECT `id`,`date`,`result`,`detail` FROM `inspection_history` {querystr} ORDER BY `date` DESC LIMIT @page, @page_size;", connection);
                 query.Parameters.AddWithValue("@page", page * page_size);
                 query.Parameters.AddWithValue("@page_size", page_size);
 
@@ -55,14 +60,14 @@ namespace AnomalyDetector.utils
 
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                table.DataSource = dt;
+
+                table.DataSource = dt;                               
 
                 return dt.Rows.Count;
             }
             catch(Exception ex)
             {
                 Debug.WriteLine($"ERROR: {ex.Message}");
-                return 0;
             }
             return 0;
         }
