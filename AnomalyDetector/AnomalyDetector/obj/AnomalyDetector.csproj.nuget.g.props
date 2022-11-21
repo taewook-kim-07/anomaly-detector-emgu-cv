@@ -12,4 +12,8 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\KTW\.nuget\packages\" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.ml.onnxruntime.gpu\1.13.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Gpu.props" Condition="Exists('$(NuGetPackageRoot)microsoft.ml.onnxruntime.gpu\1.13.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Gpu.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.ml.onnxruntime\1.13.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props" Condition="Exists('$(NuGetPackageRoot)microsoft.ml.onnxruntime\1.13.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props')" />
+  </ImportGroup>
 </Project>

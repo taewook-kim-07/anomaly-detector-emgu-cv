@@ -25,6 +25,7 @@ namespace AnomalyDetector
         autoencoder[] ae_model = new autoencoder[12];
 
         Emgu.CV.UI.ImageBox[] Cropped_ImageBox = new Emgu.CV.UI.ImageBox[12];
+        AESC[] aesc_model = new AESC[12];
         Label[] Cropped_Label = new Label[12];
         
         static object lockMethod1 = new object();
@@ -34,20 +35,29 @@ namespace AnomalyDetector
             110, 90, 120, 90, 120, 90,
             77, 100, 130, 90, 110, 110,
         };
-        private int abnormal_point = 280;
+        private int abnormal_point = 150;
 
         public Form1()
         {
             InitializeComponent();
-            
+
             Parallel.For(0, 6, (i) =>
             {
-                ae_model[i] = new autoencoder($"assets/AutoEncoder/AE_L{i + 1}.onnx", true, true, threshold[i]);
-                //if (i < 4)
-                //    ae_model[i + 6] = new autoencoder($"assets/AESC/frozen_models/AESC_R{i + 1}.pb", true, false, threshold[i + 6]);
-                //else
-                    ae_model[i + 6] = new autoencoder($"assets/AutoEncoder/AE_R{i + 1}.onnx", true, true, threshold[i + 6]);
+                ae_model[i] = new autoencoder($"assets/AutoEncoder/AE_L{i + 1}.onnx", true, threshold[i]);
+                // ae_model[i + 6] = new autoencoder($"assets/AutoEncoder/AE_R{i + 1}.onnx", true, threshold[i + 6]);
+
+                // 일부 버튼만 학습하여 테스트함
+                if (i < 4)
+                    aesc_model[i + 6] = new AESC($"assets/AESC/AESC_R{i + 1}.onnx");
+                else
+                    ae_model[i + 6] = new autoencoder($"assets/AutoEncoder/AE_R{i + 1}.onnx", true, threshold[i + 6]);
             });
+            aesc_model[4] = new AESC($"assets/AESC/AESC_L5.onnx");
+            //aesc_model[6] = new AESC($"assets/AESC_R1_54000.onnx");
+
+            //ae_model[4] = new autoencoder($"assets/AutoEncoder/AE_L5.onnx", true, threshold[4]);
+            //ae_model[6] = new autoencoder($"assets/AE_R1_100000.onnx", true, threshold[6]);
+            //ae_model[6] = new autoencoder($"assets/AutoEncoder/AE_R1_IMGAUG_50000.onnx", true, threshold[6]);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -151,26 +161,22 @@ namespace AnomalyDetector
             {
                 int score = 0;
                 Mat crop_image = crop_color_frame(original_image, item.box);
-                //CvInvoke.Rectangle(crop_image, new Rectangle(1, 1, crop_image.Width - 1, crop_image.Height - 1), new MCvScalar(0, 0, 255), 3);
 
-                //int threshold = 0;
-                //switch (item.class_id)
-                //{
-                //    case 0: threshold = Convert.ToInt32(textBox1.Text); break;
-                //    case 1: threshold = Convert.ToInt32(textBox2.Text); break;
-                //    case 2: threshold = Convert.ToInt32(textBox3.Text); break;
-                //    case 3: threshold = Convert.ToInt32(textBox4.Text); break;
-                //    case 4: threshold = Convert.ToInt32(textBox5.Text); break;
-                //    case 5: threshold = Convert.ToInt32(textBox6.Text); break;
-                //    case 6: threshold = Convert.ToInt32(textBox7.Text); break;
-                //    case 7: threshold = Convert.ToInt32(textBox8.Text); break;
-                //    case 8: threshold = Convert.ToInt32(textBox9.Text); break;
-                //    case 9: threshold = Convert.ToInt32(textBox10.Text); break;
-                //    case 10: threshold = Convert.ToInt32(textBox11.Text); break;
-                //    case 11: threshold = Convert.ToInt32(textBox12.Text); break;
-                //}
-                Trace.WriteLine($"{buttons.name(item.class_id)} find");
-                crop_image = ae_model[item.class_id].generator(ref crop_image, out score);
+                switch (item.class_id)
+                {
+                    case 4:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                        crop_image = aesc_model[item.class_id].generator(ref crop_image, out score);
+                        //crop_image = ae_model[item.class_id].generator(ref crop_image, out score);
+                        break;
+                    default:
+                        crop_image = ae_model[item.class_id].generator(ref crop_image, out score);
+                        break;
+                }
+
                 bool normal = score < abnormal_point;
 
                 this.BeginInvoke(new Action(() => {

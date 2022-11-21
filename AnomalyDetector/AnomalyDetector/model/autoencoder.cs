@@ -24,19 +24,14 @@ namespace AnomalyDetector.model
         private string NAME;
 
         Net AE_MODEL;
-        public autoencoder(string model_path, bool useCuda, bool readonnx = true, int threshold = 80, int input_width = 128, int input_height = 128)
+        public autoencoder(string model_path, bool useCuda, int threshold = 80, int input_width = 128, int input_height = 128)
         {
             INPUT_WIDTH = input_width;
             INPUT_HEIGHT = input_height;
             THRESHOLD = threshold;
             NAME = model_path.Substring(model_path.LastIndexOf('/') + 1, model_path.LastIndexOf('.') - model_path.LastIndexOf('/') - 1);
 
-            Trace.WriteLine($"{NAME} {model_path}");
-            if(readonnx)
-                AE_MODEL = Emgu.CV.Dnn.DnnInvoke.ReadNetFromONNX(model_path);
-            else
-                AE_MODEL = Emgu.CV.Dnn.DnnInvoke.ReadNet(model_path);
-
+            AE_MODEL = Emgu.CV.Dnn.DnnInvoke.ReadNetFromONNX(model_path);
             if (useCuda)
             {
                 Trace.WriteLine("Running on GPU");
@@ -62,22 +57,17 @@ namespace AnomalyDetector.model
         {
             // 128, 128, 1
             Mat input_image = preprocessing(input);
-            Trace.WriteLine($"{NAME} > {input_image.Width}x{input_image.Height}");
 
             var blob = DnnInvoke.BlobFromImage(input_image, 1.0 / 255, new Size(INPUT_WIDTH, INPUT_HEIGHT), new MCvScalar(), true, false);
 
             AE_MODEL.SetInput(blob);
-
             Mat output = AE_MODEL.Forward();
-
             output = output.Reshape(0, INPUT_HEIGHT);
             CvInvoke.Multiply(output, new ScalarArray(255), output);
             output.ConvertTo(output, DepthType.Cv8U);
 
-            //input_image.Save($"result_{NAME}_1.jpg");
-            //output.Save($"result_{NAME}_2.jpg");
-
-            Trace.WriteLine($"{NAME} >>> {output.Width}x{output.Height}");
+            input_image.Save($"result_{NAME}_1.jpg");
+            output.Save($"result_{NAME}_2.jpg");
 
             CvInvoke.AbsDiff(input_image, output, output);
             CvInvoke.Threshold(output, output, THRESHOLD, 255, ThresholdType.Binary);

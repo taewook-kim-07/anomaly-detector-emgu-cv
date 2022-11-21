@@ -60,15 +60,15 @@
             this.dEBUGToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(1008, 30);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // 종료ToolStripMenuItem
             // 
             this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
-            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.종료ToolStripMenuItem.Text = "종료";
             this.종료ToolStripMenuItem.Click += new System.EventHandler(this.종료ToolStripMenuItem_Click);
             // 
@@ -78,20 +78,20 @@
             this.toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.toolStripTextBox1.Enabled = false;
             this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(129, 24);
             this.toolStripTextBox1.Text = "　　　　　";
             // 
             // 시작ToolStripMenuItem
             // 
             this.시작ToolStripMenuItem.Name = "시작ToolStripMenuItem";
-            this.시작ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.시작ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.시작ToolStripMenuItem.Text = "시작";
             this.시작ToolStripMenuItem.Click += new System.EventHandler(this.시작ToolStripMenuItem_Click);
             // 
             // 기록ToolStripMenuItem
             // 
             this.기록ToolStripMenuItem.Name = "기록ToolStripMenuItem";
-            this.기록ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.기록ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.기록ToolStripMenuItem.Text = "기록";
             this.기록ToolStripMenuItem.Click += new System.EventHandler(this.기록ToolStripMenuItem_Click);
             // 
@@ -100,13 +100,13 @@
             this.dEBUGToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.이미지불러오기ToolStripMenuItem});
             this.dEBUGToolStripMenuItem.Name = "dEBUGToolStripMenuItem";
-            this.dEBUGToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.dEBUGToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.dEBUGToolStripMenuItem.Text = "DEBUG";
             // 
             // 이미지불러오기ToolStripMenuItem
             // 
             this.이미지불러오기ToolStripMenuItem.Name = "이미지불러오기ToolStripMenuItem";
-            this.이미지불러오기ToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.이미지불러오기ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.이미지불러오기ToolStripMenuItem.Text = "이미지 불러오기";
             this.이미지불러오기ToolStripMenuItem.Click += new System.EventHandler(this.이미지불러오기ToolStripMenuItem_Click);
             // 
@@ -115,18 +115,17 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 722);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(11, 0, 1, 0);
             this.statusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.statusStrip1.Size = new System.Drawing.Size(784, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1008, 26);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(31, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 20);
             this.toolStripStatusLabel1.Text = "준비";
             // 
             // tableLayoutPanel1
@@ -144,12 +143,11 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel_left, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel_right, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.imageBox_center, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 21);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(781, 522);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1003, 696);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // tableLayoutPanel_left
@@ -160,13 +158,14 @@
             this.tableLayoutPanel_left.ColumnCount = 2;
             this.tableLayoutPanel_left.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel_left.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel_left.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel_left.Location = new System.Drawing.Point(5, 5);
+            this.tableLayoutPanel_left.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel_left.Name = "tableLayoutPanel_left";
             this.tableLayoutPanel_left.RowCount = 3;
             this.tableLayoutPanel_left.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel_left.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel_left.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel_left.Size = new System.Drawing.Size(253, 514);
+            this.tableLayoutPanel_left.Size = new System.Drawing.Size(325, 686);
             this.tableLayoutPanel_left.TabIndex = 3;
             // 
             // tableLayoutPanel_right
@@ -177,13 +176,14 @@
             this.tableLayoutPanel_right.ColumnCount = 2;
             this.tableLayoutPanel_right.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel_right.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel_right.Location = new System.Drawing.Point(524, 4);
+            this.tableLayoutPanel_right.Location = new System.Drawing.Point(673, 5);
+            this.tableLayoutPanel_right.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel_right.Name = "tableLayoutPanel_right";
             this.tableLayoutPanel_right.RowCount = 3;
             this.tableLayoutPanel_right.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel_right.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel_right.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel_right.Size = new System.Drawing.Size(253, 514);
+            this.tableLayoutPanel_right.Size = new System.Drawing.Size(325, 686);
             this.tableLayoutPanel_right.TabIndex = 3;
             // 
             // imageBox_center
@@ -192,10 +192,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.imageBox_center.BackColor = System.Drawing.SystemColors.Control;
-            this.imageBox_center.Location = new System.Drawing.Point(263, 3);
-            this.imageBox_center.Margin = new System.Windows.Forms.Padding(2);
+            this.imageBox_center.Location = new System.Drawing.Point(338, 4);
             this.imageBox_center.Name = "imageBox_center";
-            this.imageBox_center.Size = new System.Drawing.Size(255, 516);
+            this.imageBox_center.Size = new System.Drawing.Size(327, 688);
             this.imageBox_center.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imageBox_center.TabIndex = 4;
             this.imageBox_center.TabStop = false;
@@ -208,15 +207,14 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(1008, 748);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Anomaly Detector";

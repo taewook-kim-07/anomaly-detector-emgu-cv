@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <PlatformTarget>x64</PlatformTarget>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
@@ -17,6 +17,8 @@
     <PackageReference Include="Emgu.CV.runtime.windows" Version="4.6.0.5131" />
     <PackageReference Include="Emgu.CV.runtime.windows.cuda" Version="4.6.0.5131" />
     <PackageReference Include="Emgu.CV.UI" Version="4.6.0.5131" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.13.1" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime.Gpu" Version="1.13.1" />
     <PackageReference Include="MySql.Data" Version="8.0.31" />
   </ItemGroup>
 
@@ -36,6 +38,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="assets\AESC\AESC_L5.onnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="assets\AESC\AESC_R1.onnx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -48,19 +53,19 @@
     <None Update="assets\AESC\AESC_R4.onnx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="assets\AESC\frozen_models\AESC_R1.pb">
+    <None Update="assets\AESC_L5_50000.onnx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="assets\AESC\frozen_models\AESC_R2.pb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="assets\AESC\frozen_models\AESC_R3.pb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="assets\AESC\frozen_models\AESC_R4.pb">
+    <None Update="assets\AESC_R1_54000.onnx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="assets\AE_R1.onnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\AE_R1_100000.onnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\AE_R1_IMGAUG_50000.onnx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="assets\AutoEncoder\AE_L1.onnx">
@@ -103,6 +108,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="assets\labels.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\test.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="assets\yolov5.onnx">
