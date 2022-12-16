@@ -4,7 +4,7 @@
 [![ml.net][ml.net-image]][ml.net-url]
 [![emgu][opencv-image]][emgu-url]
 
-OpenCV2의 NET과 ML.NET를 이용하여 ONNX 모델을 불러와 객체 탐지 및 이미지의 이상을 탐지합니다. 이상치 탐지 결과를 Mysql에 저장하고 불러올 수 있습니다.
+OpenCV의 NET과 ML.NET를 이용하여 ONNX 모델을 불러와 객체 탐지 및 이미지의 이상을 탐지합니다. 이상치 탐지 결과를 Mysql에 저장하고 불러올 수 있습니다.
 
 * OpenCV
   * Yolo v5
